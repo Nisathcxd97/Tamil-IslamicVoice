@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
+  <!-- ===== IMPORTANT SEO META TAGS ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tamil Islamic Voice - இஸ்லாமிய வானொலி</title>
+  
+  <!-- Primary Meta Tags for Search Engines -->
+  <title>Tamil Islamic Voice - இஸ்லாமிய வானொலி & டிவி | நேரலை ஒலிபரப்பு</title>
+  <meta name="description" content="Tamil Islamic Voice - 24/7 இஸ்லாமிய வானொலி நேரலை. குர்ஆன், ஹதீஸ், பயான்கள். Tamil Muslim TV YouTube சேனல். இஸ்லாமிய உள்ளடக்கங்களை தமிழில் கேட்கவும்.">
+  <meta name="keywords" content="Tamil Islamic Voice, இஸ்லாமிய வானொலி, Tamil Muslim TV, Islamic Radio Tamil, குர்ஆன் ஓதுதல், ஹதீஸ், இஸ்லாமிய பயான், தமிழ் இஸ்லாமிய ஒலிபரப்பு">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tamilislamicvoice.online/">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Tamil Islamic Voice - இஸ்லாமிய வானொலி & டிவி">
+  <meta property="og:description" content="24/7 இஸ்லாமிய வானொலி நேரலை மற்றும் Tamil Muslim TV YouTube சேனல். இஸ்லாமிய உள்ளடக்கங்களை தமிழில் கேட்கவும்.">
+  <meta property="og:url" content="https://tamilislamicvoice.online/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ta_IN">
+
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#1a5a3a">
+
+  <!-- ===== STRUCTURED DATA (JSON-LD) for better SEO ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tamil Islamic Voice",
+    "url": "https://tamilislamicvoice.online/",
+    "description": "24/7 இஸ்லாமிய வானொலி நேரலை மற்றும் Tamil Muslim TV YouTube சேனல்.",
+    "inLanguage": "ta",
+    "potentialAction": {
+      "@type": "ListenAction",
+      "target": "https://stream.zeno.fm/v6mwdn1kcd0uv"
+    }
+  }
+  </script>
+
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
     /* Islamic Theme Colors */
     :root {
@@ -275,7 +310,7 @@
       text-decoration: underline;
     }
 
-    /* YouTube Link Card (NEW - only link) */
+    /* YouTube Link Card */
     .youtube-link-card {
       background: rgba(13, 35, 22, 0.8);
       backdrop-filter: blur(4px);
@@ -463,7 +498,7 @@
       </div>
     </div>
 
-    <!-- YouTube Channel Link (NEW - only link, no embed) -->
+    <!-- YouTube Channel Link -->
     <div class="youtube-link-card">
       <div class="channel-name">
         <i class="fab fa-youtube"></i> Tamil Muslim TV - YouTube சேனல்
@@ -523,7 +558,6 @@
       const playIcon = document.getElementById('playIcon');
       const btnText = document.getElementById('buttonText');
 
-      // Play/Pause functionality
       function togglePlay() {
         if (audio.paused) {
           audio.play().catch(error => {
@@ -541,13 +575,11 @@
 
       playBtn.addEventListener('click', togglePlay);
 
-      // When audio ends (or error), reset button
       audio.addEventListener('ended', function() {
         playIcon.className = 'fas fa-play';
         btnText.textContent = 'நேரலையை கேட்க';
       });
 
-      // If error occurs (like stream unavailable)
       audio.addEventListener('error', function(e) {
         console.warn('Audio error:', e);
         if (!audio.paused) {
