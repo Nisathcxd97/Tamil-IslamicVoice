@@ -3,1219 +3,213 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tamil Islamic Voice - Live Radio</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-
-    <!-- Font Awesome 6 (Free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-    <style>
-        /* ===== RESET & BASE ===== */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0a7e3d;
-            --primary-dark: #065a2b;
-            --primary-light: #e8f5ee;
-            --gold: #d4a843;
-            --gold-light: #f0e0a8;
-            --dark: #0d1a12;
-            --gray: #4a5a50;
-            --light-gray: #f5f8f6;
-            --white: #ffffff;
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
-            --radius: 20px;
-            --transition: 0.3s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--light-gray);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            background: var(--primary);
-            color: var(--white);
-            box-shadow: 0 8px 24px rgba(10, 126, 61, 0.30);
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(10, 126, 61, 0.45);
-            background: var(--primary-dark);
-        }
-        .btn-gold {
-            background: var(--gold);
-            box-shadow: 0 8px 24px rgba(212, 168, 67, 0.35);
-            color: var(--dark);
-        }
-        .btn-gold:hover {
-            background: #c49a3a;
-            box-shadow: 0 12px 32px rgba(212, 168, 67, 0.50);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-            box-shadow: 0 8px 24px rgba(10, 126, 61, 0.30);
-        }
-
-        /* ===== HEADER / NAV ===== */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 12px 0;
-        }
-
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--primary);
-        }
-        .logo i {
-            font-size: 2rem;
-            color: var(--gold);
-        }
-        .logo span {
-            color: var(--dark);
-            font-weight: 400;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--gray);
-            transition: var(--transition);
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .nav-links a.active {
-            color: var(--primary);
-        }
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: var(--dark);
-            background: none;
-            border: none;
-            padding: 4px;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            padding: 60px 0 80px;
-            background: linear-gradient(145deg, var(--white) 0%, var(--primary-light) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(10, 126, 61, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .hero::after {
-            content: '﷽';
-            font-size: 18rem;
-            color: rgba(10, 126, 61, 0.04);
-            position: absolute;
-            bottom: -60px;
-            left: -40px;
-            font-family: serif;
-            pointer-events: none;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 12px;
-        }
-        .hero-content h1 .highlight {
-            color: var(--primary);
-        }
-        .hero-content h1 .gold {
-            color: var(--gold);
-        }
-
-        .hero-content .tagline {
-            font-size: 1.15rem;
-            color: var(--gray);
-            margin-bottom: 28px;
-            max-width: 500px;
-        }
-
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-        .hero-badges span {
-            background: var(--white);
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--primary);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(10, 126, 61, 0.12);
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        /* ===== PLAYER CARD ===== */
-        .player-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 32px 28px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            border: 1px solid rgba(10, 126, 61, 0.08);
-            transition: var(--transition);
-        }
-        .player-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.12);
-        }
-
-        .player-card .station-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gray);
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-        .player-card .station-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 6px;
-        }
-        .player-card .station-title .gold {
-            color: var(--gold);
-        }
-
-        .player-card .status {
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-        .player-card .status .dot {
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse-dot 1.6s ease-in-out infinite;
-        }
-        @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(0.7);
-            }
-        }
-
-        /* Audio player custom */
-        .custom-player {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0 12px;
-        }
-        .custom-player button {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            border: none;
-            background: var(--primary);
-            color: var(--white);
-            font-size: 1.6rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 8px 24px rgba(10, 126, 61, 0.30);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .custom-player button:hover {
-            transform: scale(1.06);
-            box-shadow: 0 12px 32px rgba(10, 126, 61, 0.45);
-        }
-        .custom-player button.playing {
-            background: var(--gold);
-            box-shadow: 0 8px 24px rgba(212, 168, 67, 0.35);
-        }
-        .custom-player button.playing:hover {
-            box-shadow: 0 12px 32px rgba(212, 168, 67, 0.50);
-        }
-
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 6px;
-            justify-content: center;
-        }
-        .volume-control i {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        .volume-control input[type="range"] {
-            width: 100px;
-            height: 4px;
-            -webkit-appearance: none;
-            appearance: none;
-            background: #ddd;
-            border-radius: 4px;
-            outline: none;
-        }
-        .volume-control input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-        }
-
-        .player-card .now-playing {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-top: 10px;
-            border-top: 1px solid #eee;
-            padding-top: 12px;
-        }
-        .player-card .now-playing strong {
-            color: var(--dark);
-        }
-
-        /* ===== AUTO-PLAY OVERLAY ===== */
-        .autoplay-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(8px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
-        .autoplay-overlay.active {
-            display: flex;
-        }
-        .autoplay-box {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 48px 40px;
-            max-width: 440px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.30);
-            animation: fadeUp 0.4s ease;
-        }
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .autoplay-box i {
-            font-size: 3.6rem;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-        .autoplay-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-        }
-        .autoplay-box p {
-            color: var(--gray);
-            margin-bottom: 24px;
-            font-size: 0.95rem;
-        }
-        .autoplay-box .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 72px 0;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .section-title .gold {
-            color: var(--gold);
-        }
-        .section-sub {
-            color: var(--gray);
-            font-size: 1.05rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        /* ===== ABOUT ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .about-text p {
-            color: var(--gray);
-            margin-bottom: 18px;
-            font-size: 1.05rem;
-        }
-        .about-text .features-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px 24px;
-            margin-top: 20px;
-        }
-        .about-text .features-list li {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        .about-text .features-list i {
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-        .about-image {
-            background: var(--primary-light);
-            border-radius: var(--radius);
-            padding: 40px;
-            text-align: center;
-            min-height: 220px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed rgba(10, 126, 61, 0.15);
-        }
-        .about-image i {
-            font-size: 5rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            opacity: 0.5;
-        }
-        .about-image p {
-            color: var(--gray);
-            font-weight: 500;
-        }
-
-        /* ===== CONTACT / INFO ===== */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .info-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-        .info-card {
-            background: var(--white);
-            padding: 24px 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-            border: 1px solid #eee;
-            transition: var(--transition);
-        }
-        .info-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
-        }
-        .info-card .icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--primary-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-        }
-        .info-card h4 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--gray);
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .info-card p {
-            font-weight: 600;
-            font-size: 1rem;
-            word-break: break-word;
-        }
-        .info-card a {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        .info-card a:hover {
-            text-decoration: underline;
-        }
-
-        .address-card {
-            grid-column: 1 / -1;
-        }
-
-        .contact-form-wrap {
-            background: var(--white);
-            padding: 32px 28px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-        .contact-form-wrap h3 {
-            font-size: 1.3rem;
-            margin-bottom: 4px;
-        }
-        .contact-form-wrap p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-        .contact-form-wrap .form-group {
-            margin-bottom: 16px;
-        }
-        .contact-form-wrap input,
-        .contact-form-wrap textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1px solid #e0e4e2;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: var(--light-gray);
-        }
-        .contact-form-wrap input:focus,
-        .contact-form-wrap textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(10, 126, 61, 0.10);
-            background: var(--white);
-        }
-        .contact-form-wrap textarea {
-            resize: vertical;
-            min-height: 110px;
-        }
-        .contact-form-wrap .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* ===== SOCIAL LINKS ===== */
-        .social-section {
-            background: var(--white);
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-        }
-        .social-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px 40px;
-        }
-        .social-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            padding: 10px 20px;
-            border-radius: 50px;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-        .social-item i {
-            font-size: 1.6rem;
-            width: 40px;
-            text-align: center;
-        }
-        .social-item:hover {
-            border-color: #ddd;
-            background: var(--light-gray);
-            transform: translateY(-2px);
-        }
-        .social-item.youtube i {
-            color: #ff0000;
-        }
-        .social-item.whatsapp i {
-            color: #25d366;
-        }
-        .social-item.email i {
-            color: #ea4335;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--dark);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 40px 0 28px;
-        }
-        .footer-inner {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-        .footer-inner .copy {
-            font-size: 0.9rem;
-        }
-        .footer-inner .copy strong {
-            color: var(--white);
-        }
-        .footer-inner .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .footer-inner .footer-links a {
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-        .footer-inner .footer-links a:hover {
-            color: var(--white);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .hero-content h1 {
-                font-size: 2.6rem;
-            }
-            .hero {
-                padding: 40px 0 60px;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-cards {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                padding: 16px 0 4px;
-                gap: 12px;
-            }
-            .nav-links.open {
-                display: flex;
-            }
-            .hamburger {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            .player-card .station-title {
-                font-size: 1.4rem;
-            }
-            .custom-player button {
-                width: 56px;
-                height: 56px;
-                font-size: 1.3rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .info-cards {
-                grid-template-columns: 1fr;
-            }
-            .about-text .features-list {
-                grid-template-columns: 1fr;
-            }
-            .social-grid {
-                gap: 12px;
-            }
-            .social-item {
-                font-size: 0.9rem;
-                padding: 8px 14px;
-            }
-            .social-item i {
-                font-size: 1.3rem;
-                width: 32px;
-            }
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-            .autoplay-box {
-                padding: 32px 24px;
-            }
-            .hero-badges span {
-                font-size: 0.75rem;
-                padding: 4px 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-            .hero-content h1 {
-                font-size: 1.7rem;
-            }
-            .player-card {
-                padding: 24px 16px;
-            }
-            .contact-form-wrap {
-                padding: 24px 16px;
-            }
-        }
-    </style>
+    <title>Tamil Islamic Voice - Radio</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-    <!-- ===== AUTO-PLAY OVERLAY ===== -->
-    <div class="autoplay-overlay active" id="autoplayOverlay">
-        <div class="autoplay-box">
-            <i class="fas fa-headphones"></i>
-            <h3>Listen Live</h3>
-            <p>Tap the button below to start streaming <strong>Tamil Islamic Voice</strong> live.</p>
-            <button class="btn btn-gold" id="enableAudioBtn">
-                <i class="fas fa-play"></i> Play Radio
-            </button>
-        </div>
-    </div>
-
     <!-- ===== HEADER ===== -->
     <header>
-        <div class="container header-inner">
-            <a href="#" class="logo">
-                <i class="fas fa-mosque"></i>
-                Tamil<span>Islamic</span>Voice
-            </a>
-
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <div class="container header-flex">
+            <div class="logo">
+                <i class="fas fa-microphone-alt"></i>
+                <span>Tamil Islamic Voice</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#stations">Stations</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#social">Connect</a></li>
-            </ul>
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
-        <div class="container hero-grid">
-            <!-- Left -->
-            <div class="hero-content">
-                <h1>
-                    <span class="highlight">Tamil</span>
-                    <span class="gold">Islamic</span>
-                    <span class="highlight">Voice</span>
-                </h1>
-                <p class="tagline">
-                    Your trusted source for Islamic teachings, Quranic recitations, and
-                    community news — live from Trincomalee, Sri Lanka.
-                </p>
-                <div class="hero-badges">
-                    <span><i class="fas fa-microphone" style="margin-right:6px;"></i> Live 24/7</span>
-                    <span><i class="fas fa-quran"></i> Islamic Content</span>
-                    <span><i class="fas fa-globe"></i> Worldwide</span>
-                </div>
-                <div class="hero-actions">
-                    <a href="#player" class="btn"><i class="fas fa-play"></i> Listen Now</a>
-                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact</a>
-                </div>
+    <!-- ===== HERO / PLAYER SECTION ===== -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Tamil Islamic Voice</h1>
+                <p>Your source for Islamic content in Tamil</p>
+                <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
             </div>
 
-            <!-- Right: Player -->
-            <div class="player-card" id="player">
-                <div class="station-name">
-                    <i class="fas fa-broadcast" style="color:var(--gold);"></i> LIVE STREAM
+            <!-- Main Player -->
+            <div class="player-card">
+                <div class="player-info">
+                    <img src="https://img.icons8.com/fluency/96/radio.png" alt="Radio Icon" />
+                    <div>
+                        <h3 id="stationName">Tamil Islamic Voice</h3>
+                        <p id="stationStatus">Playing now...</p>
+                    </div>
                 </div>
-                <div class="station-title">
-                    Tamil <span class="gold">Islamic</span> Voice
+                <div class="player-controls">
+                    <button id="playBtn" class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="stopBtn" class="stop-btn">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                    <span id="volumeIcon" class="volume-icon"><i class="fas fa-volume-up"></i></span>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8" />
                 </div>
-                <div class="status">
-                    <span class="dot"></span> On Air
+                <div class="player-meta">
+                    <span><i class="fas fa-headphones"></i> <span id="listenerCount">128</span> listening</span>
+                    <span><i class="fas fa-clock"></i> <span id="liveTime"></span></span>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Audio Element (hidden) -->
-                <audio id="radioAudio" preload="none">
-                    <source src="https://stream.zeno.fm/v6mwdn1kcd0uv" type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                </audio>
+    <!-- ===== STATIONS SECTION ===== -->
+    <section id="stations" class="stations">
+        <div class="container">
+            <h2>📡 All Stations</h2>
+            <div class="station-grid">
 
-                <!-- Custom Controls -->
-                <div class="custom-player">
-                    <button id="playBtn" class="playing" aria-label="Play/Pause">
-                        <i class="fas fa-play" id="playIcon"></i>
+                <!-- Station 1 - Main -->
+                <div class="station-card active" data-url="https://stream.zeno.fm/v6mwdn1kcd0uv" data-name="Tamil Islamic Voice">
+                    <div class="station-icon"><i class="fas fa-star"></i></div>
+                    <h4>Tamil Islamic Voice</h4>
+                    <p>Main Channel</p>
+                    <button class="station-play-btn" data-url="https://stream.zeno.fm/v6mwdn1kcd0uv" data-name="Tamil Islamic Voice">
+                        <i class="fas fa-play"></i> Play
                     </button>
                 </div>
 
-                <div class="volume-control">
-                    <i class="fas fa-volume-down"></i>
-                    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" />
-                    <i class="fas fa-volume-up"></i>
+                <!-- Station 2 -->
+                <div class="station-card" data-url="https://stream.muslimvanoli.com:1035/stream" data-name="Muslim Vaanoli">
+                    <div class="station-icon"><i class="fas fa-mosque"></i></div>
+                    <h4>Muslim Vaanoli</h4>
+                    <p>Islamic Radio</p>
+                    <button class="station-play-btn" data-url="https://stream.muslimvanoli.com:1035/stream" data-name="Muslim Vaanoli">
+                        <i class="fas fa-play"></i> Play
+                    </button>
                 </div>
 
-                <div class="now-playing">
-                    <i class="fas fa-headphones" style="color:var(--gold);"></i>
-                    Now Playing: <strong>Tamil Islamic Voice</strong> &middot; Live from Sri Lanka
+                <!-- Station 3 -->
+                <div class="station-card" data-url="https://hiramediacanada.radioca.st/stream" data-name="Hira FM">
+                    <div class="station-icon"><i class="fas fa-quran"></i></div>
+                    <h4>Hira FM</h4>
+                    <p>Islamic Radio</p>
+                    <button class="station-play-btn" data-url="https://hiramediacanada.radioca.st/stream" data-name="Hira FM">
+                        <i class="fas fa-play"></i> Play
+                    </button>
                 </div>
+
+                <!-- Station 4 -->
+                <div class="station-card" data-url="https://stream.rcs.revma.com/pcr8x50uty8uv" data-name="Bismeradio">
+                    <div class="station-icon"><i class="fas fa-hand-peace"></i></div>
+                    <h4>Bismeradio</h4>
+                    <p>Islamic Radio</p>
+                    <button class="station-play-btn" data-url="https://stream.rcs.revma.com/pcr8x50uty8uv" data-name="Bismeradio">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                </div>
+
+                <!-- Station 5 -->
+                <div class="station-card" data-url="https://stream.zeno.fm/xekhrn4zetzuv" data-name="SLBC Muslim">
+                    <div class="station-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <h4>SLBC Muslim</h4>
+                    <p>Islamic Radio</p>
+                    <button class="station-play-btn" data-url="https://stream.zeno.fm/xekhrn4zetzuv" data-name="SLBC Muslim">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                </div>
+
+                <!-- Station 6 -->
+                <div class="station-card" data-url="https://stream.zeno.fm/uxg9gmcarchvv" data-name="Katugastota Muslim Radio LIVE">
+                    <div class="station-icon"><i class="fas fa-music"></i></div>
+                    <h4>Katugastota Muslim Radio LIVE</h4>
+                    <p>Islamic Radio</p>
+                    <button class="station-play-btn" data-url="https://stream.zeno.fm/uxg9gmcarchvv" data-name="Katugastota Muslim Radio LIVE">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ===== ABOUT ===== -->
-    <section id="about">
+    <!-- ===== YOUTUBE EMBED ===== -->
+    <section id="youtube" class="youtube-section">
         <div class="container">
+            <h2>🎥 Our YouTube Channel</h2>
+            <div class="youtube-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed?listType=user_uploads&list=UCSAMPLE" 
+                    title="Tamil Muslim TV Channel"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank" class="btn-youtube">
+                <i class="fab fa-youtube"></i> Visit Channel
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>📖 About Us</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <h2 class="section-title">
-                        About <span class="gold">Tamil Islamic Voice</span>
-                    </h2>
-                    <p>
-                        Tamil Islamic Voice is a community-driven radio channel dedicated to
-                        spreading the message of peace, unity, and Islamic values. Based in
-                        Trincomalee, Sri Lanka, we serve Tamil-speaking Muslims around the world
-                        with authentic content.
-                    </p>
-                    <p>
-                        Our programming includes Quranic recitations, Islamic lectures, daily
-                        supplications, and community updates — all delivered with clarity and
-                        devotion.
-                    </p>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check-circle"></i> 24/7 Live Streaming</li>
-                        <li><i class="fas fa-check-circle"></i> Quran &amp; Hadith</li>
-                        <li><i class="fas fa-check-circle"></i> Islamic Lectures</li>
-                        <li><i class="fas fa-check-circle"></i> Community News</li>
-                        <li><i class="fas fa-check-circle"></i> Tamil &amp; Arabic</li>
-                        <li><i class="fas fa-check-circle"></i> Free &amp; Accessible</li>
-                    </ul>
+                    <p><strong>Tamil Islamic Voice</strong> is a dedicated radio platform bringing authentic Islamic content to the Tamil-speaking community worldwide. Our mission is to educate, inspire, and connect through the timeless message of Islam.</p>
+                    <p>Based in <strong>Siraj Nagar, Thampalagamam, Trincomalee, Sri Lanka</strong>, we serve listeners across the globe with a variety of programs including Qur'an recitation, lectures, nasheeds, and community discussions.</p>
                 </div>
-                <div class="about-image">
-                    <i class="fas fa-mosque"></i>
-                    <p>Siraj Nagar, Thampalagamam<br />Trincomalee, Sri Lanka</p>
-                    <span style="font-size:0.85rem;color:var(--gray);margin-top:6px;">
-                        <i class="fas fa-phone" style="margin-right:6px;"></i> +94 75 737 4750
-                    </span>
+                <div class="about-stats">
+                    <div class="stat"><i class="fas fa-globe"></i> <span>Global</span> <small>Reach</small></div>
+                    <div class="stat"><i class="fas fa-clock"></i> <span>24/7</span> <small>Broadcast</small></div>
+                    <div class="stat"><i class="fas fa-users"></i> <span>+10k</span> <small>Listeners</small></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SOCIAL ===== -->
-    <section class="social-section" id="social">
-        <div class="container" style="padding:48px 0;">
-            <h2 class="section-title" style="text-align:center;">
-                Connect With <span class="gold">Us</span>
-            </h2>
-            <p style="text-align:center;color:var(--gray);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;">
-                Follow, share, and stay in touch through our social channels.
-            </p>
-            <div class="social-grid">
-                <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank" rel="noopener" class="social-item youtube">
-                    <i class="fab fa-youtube"></i> YouTube
-                </a>
-                <a href="https://wa.me/94757374750" target="_blank" rel="noopener" class="social-item whatsapp">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <a href="mailto:tamilislamicvoice@gmail.com" class="social-item email">
-                    <i class="fas fa-envelope"></i> Email
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section id="contact">
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="contact">
         <div class="container">
+            <h2>📬 Contact Us</h2>
             <div class="contact-grid">
-                <!-- Info Cards -->
-                <div>
-                    <h2 class="section-title">
-                        Get in <span class="gold">Touch</span>
-                    </h2>
-                    <p class="section-sub">
-                        Reach out to us for inquiries, feedback, or collaboration.
-                    </p>
-                    <div class="info-cards">
-                        <div class="info-card">
-                            <div class="icon"><i class="fas fa-phone"></i></div>
-                            <h4>WhatsApp</h4>
-                            <p><a href="https://wa.me/94757374750" target="_blank">+94 75 737 4750</a></p>
-                        </div>
-                        <div class="info-card">
-                            <div class="icon"><i class="fas fa-envelope"></i></div>
-                            <h4>Email</h4>
-                            <p><a href="mailto:tamilislamicvoice@gmail.com">tamilislamicvoice@gmail.com</a></p>
-                        </div>
-                        <div class="info-card">
-                            <div class="icon"><i class="fab fa-youtube"></i></div>
-                            <h4>YouTube</h4>
-                            <p><a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank">Tamil Muslim TV</a></p>
-                        </div>
-                        <div class="info-card address-card">
-                            <div class="icon"><i class="fas fa-map-pin"></i></div>
-                            <h4>Address</h4>
-                            <p>
-                                Siraj Nagar, Thampalagamam,<br />
-                                Trincomalee, Sri Lanka
-                            </p>
-                        </div>
-                    </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Siraj Nagar, Thampalagamam, Trincomalee, Sri Lanka</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+94757374750">+94 75 737 4750</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:tamilislamicvoice@gmail.com">tamilislamicvoice@gmail.com</a></p>
+                    <p><i class="fab fa-youtube"></i> <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank">Tamil Muslim TV Channel</a></p>
                 </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form-wrap">
-                    <h3>Send a Message</h3>
-                    <p>We'll get back to you as soon as possible.</p>
-                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required />
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-gold">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                    <textarea rows="4" placeholder="Your Message..." required></textarea>
+                    <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="container footer-inner">
-            <div class="copy">
-                &copy; 2026 <strong>Tamil Islamic Voice</strong> &middot; All rights reserved.
-            </div>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-                <a href="mailto:tamilislamicvoice@gmail.com">Email</a>
+        <div class="container footer-flex">
+            <p>&copy; 2026 Tamil Islamic Voice. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://wa.me/94757374750" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:tamilislamicvoice@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- ===== JAVASCRIPT ===== -->
-    <script>
-        // ===== DOM REFS =====
-        const audio = document.getElementById('radioAudio');
-        const playBtn = document.getElementById('playBtn');
-        const playIcon = document.getElementById('playIcon');
-        const volumeSlider = document.getElementById('volumeSlider');
-        const overlay = document.getElementById('autoplayOverlay');
-        const enableBtn = document.getElementById('enableAudioBtn');
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        let isPlaying = false;
-        let autoplayAttempted = false;
-
-        // ===== VOLUME =====
-        volumeSlider.addEventListener('input', () => {
-            audio.volume = parseFloat(volumeSlider.value);
-        });
-        audio.volume = 0.8;
-
-        // ===== PLAY / PAUSE =====
-        function togglePlay() {
-            if (audio.paused) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    updateUI();
-                }).catch((err) => {
-                    console.warn('Play blocked:', err);
-                    // If autoplay is blocked, show overlay
-                    if (!autoplayAttempted) {
-                        overlay.classList.add('active');
-                    }
-                });
-            } else {
-                audio.pause();
-                isPlaying = false;
-                updateUI();
-            }
-        }
-
-        function updateUI() {
-            if (isPlaying) {
-                playIcon.className = 'fas fa-pause';
-                playBtn.classList.add('playing');
-            } else {
-                playIcon.className = 'fas fa-play';
-                playBtn.classList.remove('playing');
-            }
-        }
-
-        playBtn.addEventListener('click', togglePlay);
-
-        // ===== AUTO-PLAY ON LOAD =====
-        function attemptAutoplay() {
-            autoplayAttempted = true;
-            audio.play().then(() => {
-                isPlaying = true;
-                updateUI();
-                overlay.classList.remove('active');
-            }).catch(() => {
-                overlay.classList.add('active');
-            });
-        }
-
-        // Try autoplay immediately
-        attemptAutoplay();
-
-        // ===== ENABLE AUDIO BUTTON (overlay) =====
-        enableBtn.addEventListener('click', () => {
-            overlay.classList.remove('active');
-            audio.play().then(() => {
-                isPlaying = true;
-                updateUI();
-            }).catch((err) => {
-                console.warn('Still blocked:', err);
-                // fallback: show overlay again?
-            });
-        });
-
-        // ===== HAMBURGER =====
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-
-        // ===== CLOSE NAV ON LINK CLICK (mobile) =====
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-            });
-        });
-
-        // ===== ACTIVE NAV LINK =====
-        const sections = document.querySelectorAll('section[id]');
-        const navAnchors = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const top = section.offsetTop - 120;
-                if (window.scrollY >= top) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navAnchors.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href') === '#' + current) {
-                    a.classList.add('active');
-                }
-            });
-        });
-
-        // ===== CONTACT FORM =====
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            const original = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            btn.disabled = true;
-
-            // Simulate send
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-                btn.style.background = '#0a7e3d';
-                setTimeout(() => {
-                    btn.innerHTML = original;
-                    btn.disabled = false;
-                    btn.style.background = '';
-                    e.target.reset();
-                }, 1800);
-            }, 1400);
-        }
-
-        // ===== KEYBOARD SHORTCUT: Space =====
-        document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            if (e.code === 'Space') {
-                e.preventDefault();
-                togglePlay();
-            }
-        });
-
-        // ===== AUDIO ERROR HANDLING =====
-        audio.addEventListener('error', () => {
-            console.warn('Audio error — stream may be offline.');
-            // If stream fails, show a message in the player
-            const status = document.querySelector('.status');
-            if (status) {
-                status.innerHTML = '<span style="color:#b91c1c;"><i class="fas fa-exclamation-triangle"></i> Stream offline</span>';
-            }
-        });
-
-        // ===== WHEN USER TAPS ANYWHERE ON PAGE, TRY TO UNLOCK AUDIO =====
-        document.addEventListener('click', function unlockAudio() {
-            if (audio.paused && !autoplayAttempted) {
-                attemptAutoplay();
-            }
-            // Remove listener after first click to avoid spam
-            document.removeEventListener('click', unlockAudio);
-        }, { once: true });
-
-        console.log('🎙️ Tamil Islamic Voice — Live Radio');
-        console.log('📡 Stream: https://stream.zeno.fm/v6mwdn1kcd0uv');
-        console.log('📺 YouTube: @tamilmuslimtvchannel');
-        console.log('📞 WhatsApp: +94757374750');
-        console.log('📧 Email: tamilislamicvoice@gmail.com');
-        console.log('📍 Siraj Nagar, Thampalagamam, Trincomalee, Sri Lanka');
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
+
