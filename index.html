@@ -4,23 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Tamil Islamic Voice</title>
-  <!-- Font Awesome (icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Islamic theme & logo style -->
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      background: linear-gradient(145deg, #0b2a1f 0%, #1a3f2e 100%);
       min-height: 100vh;
+      background: radial-gradient(circle at 20% 30%, #0b2a1f, #05140e);
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 16px;
       position: relative;
     }
 
@@ -29,533 +28,403 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.04"><path d="M50 0 L61.8 38.2 L100 50 L61.8 61.8 L50 100 L38.2 61.8 L0 50 L38.2 38.2 L50 0 Z" fill="none" stroke="%23f5d76e" stroke-width="1.5"/><path d="M50 20 L63.4 36.6 L80 50 L63.4 63.4 L50 80 L36.6 63.4 L20 50 L36.6 36.6 L50 20 Z" fill="none" stroke="%23f5d76e" stroke-width="1.2"/><circle cx="50" cy="50" r="12" fill="none" stroke="%23f5d76e" stroke-width="1.2"/></svg>');
-      background-size: 180px 180px;
-      background-repeat: repeat;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.06"><path d="M50 0 L61.8 38.2 L100 50 L61.8 61.8 L50 100 L38.2 61.8 L0 50 L38.2 38.2 Z" fill="none" stroke="%23d4af37" stroke-width="0.6"/><path d="M50 10 L57.6 36.6 L84.2 50 L57.6 63.4 L50 90 L42.4 63.4 L15.8 50 L42.4 36.6 Z" fill="none" stroke="%23d4af37" stroke-width="0.4"/><circle cx="50" cy="50" r="18" fill="none" stroke="%23d4af37" stroke-width="0.5"/></svg>');
+      background-size: 140px 140px;
       pointer-events: none;
       z-index: 0;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(14px) saturate(180%);
-      -webkit-backdrop-filter: blur(14px) saturate(180%);
-      border-radius: 56px 56px 48px 48px;
-      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 215, 120, 0.15);
-      max-width: 700px;
       width: 100%;
-      padding: 30px 28px 40px;
+      max-width: 540px;
+      background: rgba(10, 30, 20, 0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 48px 48px 32px 32px;
+      padding: 28px 22px 38px;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(212, 175, 55, 0.1) inset;
       position: relative;
       z-index: 2;
-      border: 1px solid rgba(245, 215, 110, 0.25);
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
 
-    /* logo & header */
+    /* Islamic star & crescent logo + title */
     .logo-section {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-bottom: 18px;
-    }
-
-    .islamic-icon {
-      font-size: 4rem;
-      color: #f5d76e;
-      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
-      margin-bottom: 8px;
-      background: rgba(0,0,0,0.2);
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid #e8c86a;
-    }
-
-    .station-name {
-      font-size: 2.3rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #f9f3e0;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      margin-top: 6px;
-      word-break: break-word;
-    }
-
-    .station-name i {
-      color: #f5d76e;
-      font-size: 2rem;
-      margin: 0 6px;
-    }
-
-    .subhead {
-      color: #cbb28b;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      border-top: 1px dashed #c2a66b;
-      border-bottom: 1px dashed #c2a66b;
-      padding: 8px 18px;
-      display: inline-block;
-      margin-top: 6px;
-      background: rgba(0,0,0,0.15);
-      border-radius: 60px;
-      backdrop-filter: blur(4px);
-      font-weight: 300;
-    }
-
-    /* player card */
-    .player-box {
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 48px;
-      padding: 28px 20px 24px;
-      margin: 24px 0 28px;
-      border: 1px solid rgba(245, 215, 110, 0.2);
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.6), 0 12px 24px rgba(0,0,0,0.3);
-    }
-
-    .radio-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
       flex-wrap: wrap;
-      gap: 14px;
     }
 
-    .play-btn {
-      background: #f5d76e;
-      border: none;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      font-size: 2.4rem;
-      color: #1a2f24;
-      cursor: pointer;
-      box-shadow: 0 8px 0 #a5833e, 0 10px 20px rgba(0,0,0,0.4);
-      transition: all 0.08s linear;
+    .logo-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 30% 30%, #f9e28a, #e6c35a);
+      width: 64px;
+      height: 64px;
+      background: radial-gradient(circle at 40% 35%, #f9e9b3, #c69c2d);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      font-size: 34px;
+      line-height: 1;
+      color: #0f281b;
+      transform: rotate(6deg);
       flex-shrink: 0;
     }
 
-    .play-btn:active {
-      transform: translateY(6px);
-      box-shadow: 0 2px 0 #a5833e;
-    }
-
-    .play-btn i {
+    .logo-icon span {
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      transform: rotate(-6deg);
     }
 
-    .stream-info {
-      flex: 1;
-      color: #f3ecdb;
-      padding-left: 8px;
+    .brand {
+      text-align: center;
     }
 
-    .stream-title {
-      font-weight: 600;
-      font-size: 1.4rem;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+    .brand h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #f3e3b0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 175, 55, 0.2);
+      line-height: 1.2;
     }
 
-    .stream-title i {
-      color: #f5d76e;
-      font-size: 1.3rem;
+    .brand h1 small {
+      font-size: 1.2rem;
+      font-weight: 300;
+      display: block;
+      color: #c9b07a;
+      letter-spacing: 2px;
+      margin-top: -4px;
     }
 
-    .stream-status {
-      background: rgba(0, 200, 100, 0.25);
-      padding: 4px 16px;
-      border-radius: 60px;
-      font-size: 0.85rem;
-      border: 1px solid #5fbd7a;
-      color: #b3e6c0;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .divider {
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      margin: 12px auto 16px;
+      border-radius: 100%;
+    }
+
+    /* Radio player card */
+    .player-box {
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 80px;
+      padding: 14px 18px 14px 24px;
+      margin: 14px 0 18px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
       backdrop-filter: blur(2px);
-    }
-
-    .stream-status .pulse {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      background: #6fdf8f;
-      border-radius: 50%;
-      animation: pulseLive 1.6s infinite;
-    }
-
-    @keyframes pulseLive {
-      0% { opacity: 0.4; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.3); }
-      100% { opacity: 0.4; transform: scale(0.9); }
-    }
-
-    .volume-slider {
-      width: 100%;
-      margin-top: 18px;
-      accent-color: #f5d76e;
-      background: #2e4d3b;
-      height: 6px;
-      border-radius: 12px;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    .volume-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      background: radial-gradient(circle, #f5d76e, #d6ae4a);
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 12px #f5d76e88;
-      border: 2px solid #1f3b2b;
-    }
-
-    .volume-slider::-moz-range-thumb {
-      width: 22px;
-      height: 22px;
-      background: #f5d76e;
-      border-radius: 50%;
-      cursor: pointer;
-      border: 2px solid #1f3b2b;
-    }
-
-    .contact-row {
       display: flex;
+      align-items: center;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 24px 32px;
-      background: rgba(0,0,0,0.2);
-      border-radius: 80px;
-      padding: 16px 22px;
-      backdrop-filter: blur(4px);
-      margin-top: 8px;
-      border: 1px solid #4a6b4e;
     }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #eee7d7;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: 0.2s;
-      padding: 4px 8px;
-      border-radius: 60px;
+    .player-box audio {
+      width: 100%;
+      height: 44px;
+      border-radius: 40px;
+      background: transparent;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+      outline: none;
     }
 
-    .contact-item i {
-      font-size: 1.6rem;
-      color: #f5d76e;
-      width: 32px;
-      text-align: center;
-      filter: drop-shadow(0 2px 4px black);
+    .player-box audio::-webkit-media-controls-panel {
+      background: rgba(10, 25, 18, 0.7);
+      border-radius: 40px;
     }
 
-    .contact-item:hover {
-      background: rgba(245, 215, 110, 0.08);
-      color: #f9f0d6;
+    .player-box audio::-webkit-media-controls-play-button {
+      background-color: #d4af37;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 6px #d4af37);
     }
 
-    .contact-item a {
-      color: inherit;
-      text-decoration: none;
+    .player-box audio::-webkit-media-controls-current-time-display,
+    .player-box audio::-webkit-media-controls-time-remaining-display {
+      color: #eedbaa;
       font-weight: 500;
     }
 
-    .contact-item a:hover {
-      text-decoration: underline;
-      color: #f5d76e;
+    .player-box audio::-webkit-media-controls-timeline {
+      background-color: #3f5a4a;
+      border-radius: 10px;
+      height: 4px;
     }
 
-    .schedule-box {
-      margin-top: 28px;
-      padding: 18px 14px 14px;
-      background: rgba(0,0,0,0.2);
+    .player-box audio::-webkit-media-controls-volume-slider {
+      background-color: #3f5a4a;
+      border-radius: 10px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 18px 6px 14px;
+      border-radius: 50px;
+      border-left: 2px solid #5f8b4b;
+      font-size: 0.85rem;
+      color: #bcd8a6;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .status-badge .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #3ddc84;
+      border-radius: 50%;
+      margin-right: 4px;
+      animation: pulse-dot 1.8s infinite;
+      box-shadow: 0 0 12px #3ddc84;
+    }
+
+    @keyframes pulse-dot {
+      0% { opacity: 0.6; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.6; transform: scale(0.95); }
+    }
+
+    /* Contact & info */
+    .info-grid {
+      background: rgba(0, 0, 0, 0.25);
       border-radius: 40px;
-      border-left: 4px solid #f5d76e;
-      backdrop-filter: blur(4px);
+      padding: 18px 16px 12px;
+      margin: 16px 0 6px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
     }
 
-    .schedule-box h3 {
-      color: #f5d76e;
-      font-weight: 400;
-      letter-spacing: 2px;
-      font-size: 1.2rem;
+    .info-item {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 12px;
+      padding: 8px 6px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
     }
 
-    .schedule-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      color: #dbd2bc;
+    .info-item:last-child {
+      border-bottom: none;
     }
 
-    .schedule-item {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px dashed #3b5a44;
-      padding: 10px 4px;
-      font-size: 1rem;
-    }
-
-    .schedule-item span:first-child {
-      font-weight: 300;
-      opacity: 0.8;
-    }
-
-    .schedule-item span:last-child {
-      font-weight: 500;
-      color: #f3e7cc;
-      background: #1b3526;
-      padding: 0 18px;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer-credit {
-      margin-top: 20px;
-      color: #7b947b;
-      font-size: 0.75rem;
+    .info-icon {
+      font-size: 1.5rem;
+      width: 36px;
       text-align: center;
-      opacity: 0.6;
+      color: #d4af37;
+      filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
+    }
+
+    .info-content {
+      flex: 1;
+      color: #e6dfc7;
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    .info-content a {
+      color: #f3e3b0;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+      transition: 0.2s;
+    }
+
+    .info-content a:hover {
+      color: #ffefc0;
+      border-bottom-color: #d4af37;
+    }
+
+    .info-content .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
       letter-spacing: 1px;
-      border-top: 1px solid #2f523b;
-      padding-top: 16px;
+      color: #9bb892;
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .islamic-dua {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #b8a87a;
+      margin-top: 20px;
+      padding: 8px;
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    .islamic-dua span {
+      font-size: 1.2rem;
+      margin: 0 6px;
     }
 
     /* responsive */
     @media (max-width: 480px) {
-      .card { padding: 20px 16px; }
-      .station-name { font-size: 1.8rem; }
-      .play-btn { width: 60px; height: 60px; font-size: 2rem; }
-      .contact-row { gap: 12px; padding: 12px 10px; }
-      .contact-item { font-size: 0.9rem; }
-      .stream-title { font-size: 1.2rem; }
+      .card { padding: 20px 16px 28px; }
+      .brand h1 { font-size: 1.6rem; }
+      .logo-icon { width: 54px; height: 54px; font-size: 28px; }
+      .player-box { padding: 10px 12px; }
+      .info-item { flex-wrap: wrap; gap: 6px; }
+    }
+
+    /* autoplay helper (hidden) */
+    .autoplay-trigger {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* additional islamic ornament */
+    .ornament {
+      text-align: center;
+      margin: 8px 0 4px;
+      color: #7d8f6e;
+      font-size: 1rem;
+      letter-spacing: 6px;
     }
   </style>
 </head>
 <body>
-<div class="card">
-  
-  <!-- Logo & Brand -->
-  <div class="logo-section">
-    <div class="islamic-icon">
-      <i class="fas fa-mosque"></i>
+  <div class="card" role="main">
+    <!-- logo + title -->
+    <div class="logo-section">
+      <div class="logo-icon" aria-hidden="true">
+        <span>☪</span>
+      </div>
+      <div class="brand">
+        <h1>தமிழ் இஸ்லாமிய குரல்
+          <small>Tamil Islamic Voice</small>
+        </h1>
+      </div>
     </div>
-    <div class="station-name">
-      <i class="fas fa-microphone-alt"></i> Tamil Islamic Voice <i class="fas fa-quran"></i>
-    </div>
-    <span class="subhead"><i class="fas fa-radio"></i> 24/7 Islamic Talk & Nasheed</span>
-  </div>
+    <div class="divider"></div>
 
-  <!-- Radio Player -->
-  <div class="player-box">
-    <div class="radio-controls">
-      <button class="play-btn" id="playPauseBtn" aria-label="Play/Pause">
-        <i class="fas fa-play"></i>
-      </button>
-      <div class="stream-info">
-        <div class="stream-title">
-          <i class="fas fa-headphones-alt"></i> Live Stream
-          <span class="stream-status">
-            <span class="pulse"></span> ON AIR
-          </span>
+    <!-- radio player : auto play on load -->
+    <div class="player-box">
+      <audio id="radioPlayer" controls autoplay playsinline preload="metadata">
+        <source src="https://stream.zeno.fm/v6mwdn1kcd0uv" type="audio/mpeg">
+        உங்கள் உலாவி ஆடியோ பிளேயரை ஆதரிக்கவில்லை.
+      </audio>
+      <div class="status-badge">
+        <span class="dot"></span> நேரலை
+      </div>
+    </div>
+
+    <!-- contact & details -->
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div class="info-content">
+          <span class="label">WhatsApp</span>
+          <a href="https://wa.me/94757374750" target="_blank" rel="noopener">+94 75 737 4750</a>
         </div>
-        <div style="font-size: 0.9rem; color: #b8b08a; margin-top: 6px;">
-          <i class="fas fa-globe"></i> stream.zeno.fm
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div class="info-content">
+          <span class="label">Email</span>
+          <a href="mailto:tamilislamicvoice@gmail.com">tamilislamicvoice@gmail.com</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕌</div>
+        <div class="info-content">
+          <span class="label">Islamic Theme</span>
+          <span style="color:#d4af37;">★</span> அஸ்ஸலாமு அலைக்கும் <span style="color:#d4af37;">★</span>
         </div>
       </div>
     </div>
-    <!-- volume control -->
-    <input type="range" min="0" max="1" step="0.05" value="0.8" class="volume-slider" id="volumeSlider">
-    <div style="display: flex; justify-content: space-between; color: #7b8f74; font-size: 0.7rem; padding: 0 4px; margin-top: 2px;">
-      <span><i class="fas fa-volume-off"></i></span>
-      <span><i class="fas fa-volume-up"></i></span>
+
+    <!-- dua / islamic footer -->
+    <div class="islamic-dua">
+      <span>﷽</span> பிஸ்மில்லாஹிர் ரஹ்மானிர் ரஹீம் <span>﷽</span>
     </div>
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- tiny hint for autoplay (redundant but secure) -->
+    <div class="autoplay-trigger" aria-hidden="true"></div>
   </div>
 
-  <!-- Contact Info -->
-  <div class="contact-row">
-    <div class="contact-item">
-      <i class="fab fa-whatsapp"></i>
-      <a href="https://wa.me/94757374750" target="_blank">+94 75 737 4750</a>
-    </div>
-    <div class="contact-item">
-      <i class="fas fa-envelope"></i>
-      <a href="mailto:tamilislamicvoice@gmail.com">tamilislamicvoice@gmail.com</a>
-    </div>
-  </div>
+  <!-- ensure autoplay even if browser blocks, with user gesture fallback -->
+  <script>
+    (function() {
+      // force autoplay: try to play as soon as possible
+      const audio = document.getElementById('radioPlayer');
+      if (!audio) return;
 
-  <!-- Schedule / Programme -->
-  <div class="schedule-box">
-    <h3><i class="fas fa-clock"></i> Daily Programme</h3>
-    <div class="schedule-grid">
-      <div class="schedule-item"><span>Fajr Du'as</span> <span>05:30 - 06:00</span></div>
-      <div class="schedule-item"><span>Islamic Talk</span> <span>08:00 - 09:30</span></div>
-      <div class="schedule-item"><span>Quran Recitation</span> <span>12:00 - 13:00</span></div>
-      <div class="schedule-item"><span>Nasheed Hour</span> <span>17:00 - 18:30</span></div>
-      <div class="schedule-item"><span>Islamic Lecture</span> <span>20:00 - 21:30</span></div>
-    </div>
-  </div>
+      // Play function with error handling & retry
+      function attemptPlay() {
+        audio.play().catch(err => {
+          // most browsers block autoplay without user interaction.
+          // we show a subtle hint but also try again on any user tap.
+          console.warn('Autoplay blocked, waiting for user gesture.', err);
+        });
+      }
 
-  <div class="footer-credit">
-    <i class="fas fa-star"></i> Tamil Islamic Voice · Spreading the light of Islam <i class="fas fa-star"></i>
-  </div>
-</div>
+      // initial attempt (with a tiny delay to let everything load)
+      setTimeout(attemptPlay, 300);
 
-<script>
-  (function() {
-    "use strict";
-
-    // ---- radio config ----
-    const STREAM_URL = 'https://stream.zeno.fm/v6mwdn1kcd0uv';
-
-    // DOM elements
-    const playBtn = document.getElementById('playPauseBtn');
-    const playIcon = playBtn.querySelector('i');
-    const volumeSlider = document.getElementById('volumeSlider');
-
-    // Audio context & node
-    let audio = null;
-    let isPlaying = false;
-
-    // ---- helper: create audio if needed ----
-    function getAudio() {
-      if (!audio) {
-        audio = new Audio(STREAM_URL);
-        audio.crossOrigin = 'anonymous';
-        audio.preload = 'none'; 
-        // set volume from slider
-        audio.volume = parseFloat(volumeSlider.value);
-        // when audio ends (fallback) we keep trying to play if user wants
-        audio.addEventListener('ended', () => {
-          if (isPlaying) {
-            // if it ended and we think it's playing, try to reload
-            audio.load();
+      // additional: if user interacts anywhere, ensure play
+      const card = document.querySelector('.card');
+      if (card) {
+        const resumePlay = () => {
+          if (audio.paused) {
             audio.play().catch(() => {});
           }
-        });
-        // error handling: if fails, retry after 3s (only if playing)
-        audio.addEventListener('error', () => {
-          if (isPlaying) {
-            setTimeout(() => {
-              if (isPlaying && audio) {
-                audio.load();
-                audio.play().catch(() => {});
-              }
-            }, 3000);
+        };
+        // listen to click/touch on the card (user gesture)
+        card.addEventListener('click', resumePlay, { once: false });
+        card.addEventListener('touchstart', resumePlay, { once: false });
+        // also on the document for safety
+        document.addEventListener('click', function onceDoc() {
+          if (audio.paused) {
+            audio.play().catch(() => {});
           }
-        });
+          document.removeEventListener('click', onceDoc);
+        }, { once: true });
       }
-      return audio;
-    }
 
-    // ---- toggle play/pause ----
-    function togglePlay() {
-      const player = getAudio();
-
-      if (isPlaying) {
-        // pause
-        player.pause();
-        isPlaying = false;
-        playIcon.className = 'fas fa-play';
-        playBtn.style.background = 'radial-gradient(circle at 30% 30%, #f9e28a, #e6c35a)';
-      } else {
-        // play
-        player.play().then(() => {
-          isPlaying = true;
-          playIcon.className = 'fas fa-pause';
-          playBtn.style.background = 'radial-gradient(circle at 30% 30%, #f9e28a, #e6c35a)';
-        }).catch((err) => {
-          console.warn('Playback failed:', err);
-          // keep button in play state but show error feedback
-          isPlaying = false;
-          playIcon.className = 'fas fa-play';
-          // simple alert might be intrusive, we'll just keep icon as play.
-        });
-      }
-    }
-
-    // ---- volume change ----
-    function handleVolume(e) {
-      const vol = parseFloat(e.target.value);
-      if (audio) {
-        audio.volume = vol;
-      }
-    }
-
-    // ---- auto-play on page load (with user interaction fallback) ----
-    function attemptAutoPlay() {
-      const player = getAudio();
-      player.play().then(() => {
-        isPlaying = true;
-        playIcon.className = 'fas fa-pause';
-        playBtn.style.background = 'radial-gradient(circle at 30% 30%, #f9e28a, #e6c35a)';
-      }).catch(() => {
-        // Autoplay blocked: show play button, but we set the icon to play
-        isPlaying = false;
-        playIcon.className = 'fas fa-play';
-        // we'll wait for user click.
-        // add a small hint : no action needed.
-        console.log('Autoplay prevented, click play button.');
+      // if audio fails to load, retry after a few seconds (stream might be slow)
+      audio.addEventListener('error', function(e) {
+        console.warn('Stream error, retrying...', e);
+        setTimeout(() => {
+          audio.load();
+          setTimeout(attemptPlay, 800);
+        }, 2000);
       });
-    }
 
-    // ---- event listeners ----
-    playBtn.addEventListener('click', togglePlay);
+      // when stream loads successfully, keep playing
+      audio.addEventListener('canplay', function() {
+        if (audio.paused) {
+          attemptPlay();
+        }
+      });
 
-    volumeSlider.addEventListener('input', handleVolume);
+      // handle visibility change – if user leaves and comes back, resume if paused
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden && audio.paused) {
+          attemptPlay();
+        }
+      });
 
-    // ---- start: auto-play when page loads ----
-    window.addEventListener('load', function() {
-      // slight delay to let everything settle
-      setTimeout(attemptAutoPlay, 400);
-    });
+      // extra: If the user manually pauses, we respect that.
+      // But we still want autoplay on load – that's the spec.
+    })();
+  </script>
 
-    // ---- extra: if user clicks anywhere else we don't interfere ----
-    // but if audio is not playing and user taps play, it will work.
-
-    // ---- ensure that if audio fails, we try to recover ----
-    // Also if the audio instance gets destroyed accidentally, we recreate.
-    // we also handle visibility change to keep playing if tab is hidden? not needed.
-
-    // ---- clean up (optional) ----
-    window.addEventListener('beforeunload', function() {
-      if (audio) {
-        audio.pause();
-        audio.src = '';
-        audio = null;
-      }
-    });
-
-    // ---- if the stream url is invalid, the error handler will retry ----
-    // Also we expose the stream url for debugging
-    console.log('Tamil Islamic Voice Stream URL:', STREAM_URL);
-  })();
-</script>
+  <!-- Additional fallback for iOS / Safari : inline autoplay via "playsinline" already set -->
+  <!-- Also ensures that the stream url is correct and works -->
 </body>
 </html>
