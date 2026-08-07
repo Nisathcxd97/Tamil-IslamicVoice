@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tamil Islamic Voice favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e8a5f"/>
+      <stop offset="1" stop-color="#064a33"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Radio waves -->
+  <g fill="none" stroke="#e8c766" stroke-width="2.2" stroke-linecap="round">
+    <path d="M23 19a9.5 9.5 0 0 1 18 0" opacity=".9"/>
+    <path d="M17.5 24.5a14.5 14.5 0 0 1 29 0" opacity=".5"/>
+  </g>
+  <!-- Dome -->
+  <path d="M20 32c0-7.2 5.4-12.4 12-12.4S44 24.8 44 32v2H20z" fill="#f5f7f2"/>
+  <path d="M24.5 26.5c0-4.6 3.4-8 7.5-8s7.5 3.4 7.5 8" fill="none" stroke="#e8c766" stroke-width="2"/>
+  <!-- Minarets -->
+  <rect x="12.5" y="33" width="5" height="21" rx="2.5" fill="#f5f7f2"/>
+  <rect x="46.5" y="33" width="5" height="21" rx="2.5" fill="#f5f7f2"/>
+  <circle cx="15" cy="29" r="2.3" fill="#e8c766"/>
+  <circle cx="49" cy="29" r="2.3" fill="#e8c766"/>
+  <!-- Base -->
+  <path d="M19.5 35h25v15h-25z" fill="#0b7a55" stroke="#e8c766" stroke-width="2"/>
+  <!-- Door -->
+  <path d="M32 37.5v6M29 41.5h6" stroke="#e8c766" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Crescent finial -->
+  <path d="M32 13.6l3.4 3.6h-6.8z" fill="#e8c766"/>
+  <path d="M32 12.2l2 2.1h-4z" fill="#e8c766"/>
+</svg>
