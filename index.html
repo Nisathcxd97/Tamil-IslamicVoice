@@ -1,215 +1,593 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- ============================================================
+  Tamil Islamic Voice — Live Islamic Radio Station
+  ------------------------------------------------------------
+  • HTML5 + Bootstrap 5 + Font Awesome + Bootstrap Icons
+  • Green / White / Gold Islamic premium design
+  • Autoplay live stream with "Tap to Listen" browser fallback
+  • PWA ready (manifest.json + service-worker.js)
+  • SEO + Open Graph + JSON-LD structured data
+  ============================================================ -->
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tamil Islamic Voice - Radio</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- ===================== Basic Meta ===================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamil Islamic Voice — Live Islamic Radio | Quran, Hadith &amp; Islamic Lectures</title>
+  <meta name="description" content="Tamil Islamic Voice is a live online Islamic radio station broadcasting Quran, Hadith, Islamic lectures, reminders and beneficial programs worldwide — listen anywhere, anytime. 24/7 live streaming.">
+  <meta name="keywords" content="Tamil Islamic Voice, Islamic radio, live Islamic radio, Tamil radio, Quran live, Hadith, Islamic lectures, Tamil bayan, online radio Sri Lanka, Muslim radio">
+  <meta name="author" content="Tamil Islamic Voice">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b7a55">
+  <link rel="canonical" href="https://tamilislamicvoice.online/">
+
+  <!-- ===================== Open Graph ===================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tamil Islamic Voice">
+  <meta property="og:title" content="Tamil Islamic Voice — Live Islamic Radio">
+  <meta property="og:description" content="Listen to Islamic Knowledge Anywhere, Anytime. Live 24/7 Quran, Hadith, Islamic lectures and reminders in Tamil.">
+  <meta property="og:url" content="https://tamilislamicvoice.online/">
+  <!-- Replace with your absolute domain URL when deploying -->
+  <meta property="og:image" content="https://tamilislamicvoice.online/images/hero-banner.png">
+  <meta property="og:image:width" content="1536">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:locale" content="en_US">
+
+  <!-- ===================== Twitter Card ===================== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tamil Islamic Voice — Live Islamic Radio">
+  <meta name="twitter:description" content="Listen to Islamic Knowledge Anywhere, Anytime. Live 24/7 Quran, Hadith, Islamic lectures and reminders.">
+  <meta name="twitter:image" content="https://tamilislamicvoice.online/images/hero-banner.png">
+
+  <!-- ===================== Icons & PWA ===================== -->
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- ===================== Preconnects (performance) ===================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://stream.zeno.fm" crossorigin>
+
+  <!-- ===================== Google Fonts ===================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ===================== Third-party CSS (CDN) ===================== -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- ===================== Local CSS ===================== -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+
+  <!-- ============ Theme boot script (avoids dark-mode flash) ============ -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('tiv-theme');
+        if (!t) {
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <!-- ===================== Structured Data (JSON-LD) ===================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RadioStation",
+    "name": "Tamil Islamic Voice",
+    "alternateName": "Tamil Muslim TV",
+    "url": "https://tamilislamicvoice.online/",
+    "slogan": "Listen to Islamic Knowledge Anywhere, Anytime",
+    "description": "Online Islamic radio dedicated to spreading Quran, Hadith, Islamic lectures, Islamic reminders and beneficial programs worldwide.",
+    "email": "tamilislamicvoice@gmail.com",
+    "sameAs": ["https://www.youtube.com/@tamilmuslimtvchannel"],
+    "location": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Siraj Nagar, Thampalagamam",
+        "addressLocality": "Trincomalee",
+        "addressCountry": "LK"
+      }
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+94-757374750"
+    },
+    "broadcastFrequency": "Internet Stream",
+    "streamUrl": "https://stream.zeno.fm/v6mwdn1kcd0uv"
+  }
+  </script>
 </head>
-<body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="container header-flex">
-            <div class="logo">
-                <i class="fas fa-microphone-alt"></i>
-                <span>Tamil Islamic Voice</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#stations">Stations</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <!-- Mobile Menu Button -->
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+<body id="top">
+
+  <!-- ===================== Loading Screen ===================== -->
+  <div id="loader" class="loader" role="status" aria-live="polite">
+    <div class="loader-inner">
+      <img src="images/logo.png" alt="Tamil Islamic Voice logo" class="loader-logo" width="110" height="110">
+      <div class="loader-ring" aria-hidden="true"></div>
+      <p class="loader-text">Tamil Islamic Voice</p>
+      <p class="loader-sub">Loading live radio…</p>
+    </div>
+  </div>
+
+  <!-- ===================== "Tap to Listen" Autoplay Fallback ===================== -->
+  <div id="tapOverlay" class="tap-overlay" hidden>
+    <div class="tap-card glass">
+      <img src="images/logo.png" alt="Tamil Islamic Voice logo" class="tap-logo" width="96" height="96">
+      <span class="live-badge big"><span class="live-dot"></span> LIVE</span>
+      <h2>Tamil Islamic Voice</h2>
+      <p>Your browser blocked auto-play. Tap below to start the live stream.</p>
+      <button id="btnTapListen" class="btn btn-gold btn-lg pulse-btn" type="button">
+        <i class="bi bi-play-fill" aria-hidden="true"></i> Tap to Listen Live
+      </button>
+      <small class="tap-note">Quran • Hadith • Islamic Lectures • 24/7</small>
+    </div>
+  </div>
+
+  <!-- Accessibility: skip link -->
+  <a class="skip-link" href="#home">Skip to main content</a>
+
+  <!-- ===================== Sticky Glass Navbar ===================== -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top glass-nav" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="Tamil Islamic Voice logo" width="42" height="42" class="brand-logo">
+        <span class="brand-text">Tamil <b>Islamic Voice</b></span>
+        <span class="live-badge nav-live" id="navLive"><span class="live-dot"></span> LIVE</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="index.html#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#player">Listen Live</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#radios">Other Islamic Radios</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#youtube">YouTube</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#donate">Donate</a></li>
+          <li class="nav-item"><a class="nav-link" href="privacy.html">Privacy Policy</a></li>
+          <li class="nav-item nav-actions">
+            <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark or light mode">
+              <i class="bi bi-moon-stars theme-icon" aria-hidden="true"></i>
             </button>
-        </div>
-    </header>
-
-    <!-- ===== HERO / PLAYER SECTION ===== -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Tamil Islamic Voice</h1>
-                <p>Your source for Islamic content in Tamil</p>
-                <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
-            </div>
-
-            <!-- Main Player -->
-            <div class="player-card">
-                <div class="player-info">
-                    <img src="https://img.icons8.com/fluency/96/radio.png" alt="Radio Icon" />
-                    <div>
-                        <h3 id="stationName">Tamil Islamic Voice</h3>
-                        <p id="stationStatus">Playing now...</p>
-                    </div>
-                </div>
-                <div class="player-controls">
-                    <button id="playBtn" class="play-btn">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button id="stopBtn" class="stop-btn">
-                        <i class="fas fa-stop"></i>
-                    </button>
-                    <span id="volumeIcon" class="volume-icon"><i class="fas fa-volume-up"></i></span>
-                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8" />
-                </div>
-                <div class="player-meta">
-                    <span><i class="fas fa-headphones"></i> <span id="listenerCount">128</span> listening</span>
-                    <span><i class="fas fa-clock"></i> <span id="liveTime"></span></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== STATIONS SECTION ===== -->
-    <section id="stations" class="stations">
-        <div class="container">
-            <h2>📡 All Stations</h2>
-            <div class="station-grid">
-
-                <!-- Station 1 - Main -->
-                <div class="station-card active" data-url="https://stream.zeno.fm/v6mwdn1kcd0uv" data-name="Tamil Islamic Voice">
-                    <div class="station-icon"><i class="fas fa-star"></i></div>
-                    <h4>Tamil Islamic Voice</h4>
-                    <p>Main Channel</p>
-                    <button class="station-play-btn" data-url="https://stream.zeno.fm/v6mwdn1kcd0uv" data-name="Tamil Islamic Voice">
-                        <i class="fas fa-play"></i> Play
-                    </button>
-                </div>
-
-                <!-- Station 2 -->
-                <div class="station-card" data-url="https://stream.muslimvanoli.com:1035/stream" data-name="Muslim Vaanoli">
-                    <div class="station-icon"><i class="fas fa-mosque"></i></div>
-                    <h4>Muslim Vaanoli</h4>
-                    <p>Islamic Radio</p>
-                    <button class="station-play-btn" data-url="https://stream.muslimvanoli.com:1035/stream" data-name="Muslim Vaanoli">
-                        <i class="fas fa-play"></i> Play
-                    </button>
-                </div>
-
-                <!-- Station 3 -->
-                <div class="station-card" data-url="https://hiramediacanada.radioca.st/stream" data-name="Hira FM">
-                    <div class="station-icon"><i class="fas fa-quran"></i></div>
-                    <h4>Hira FM</h4>
-                    <p>Islamic Radio</p>
-                    <button class="station-play-btn" data-url="https://hiramediacanada.radioca.st/stream" data-name="Hira FM">
-                        <i class="fas fa-play"></i> Play
-                    </button>
-                </div>
-
-                <!-- Station 4 -->
-                <div class="station-card" data-url="https://stream.rcs.revma.com/pcr8x50uty8uv" data-name="Bismeradio">
-                    <div class="station-icon"><i class="fas fa-hand-peace"></i></div>
-                    <h4>Bismeradio</h4>
-                    <p>Islamic Radio</p>
-                    <button class="station-play-btn" data-url="https://stream.rcs.revma.com/pcr8x50uty8uv" data-name="Bismeradio">
-                        <i class="fas fa-play"></i> Play
-                    </button>
-                </div>
-
-                <!-- Station 5 -->
-                <div class="station-card" data-url="https://stream.zeno.fm/xekhrn4zetzuv" data-name="SLBC Muslim">
-                    <div class="station-icon"><i class="fas fa-broadcast-tower"></i></div>
-                    <h4>SLBC Muslim</h4>
-                    <p>Islamic Radio</p>
-                    <button class="station-play-btn" data-url="https://stream.zeno.fm/xekhrn4zetzuv" data-name="SLBC Muslim">
-                        <i class="fas fa-play"></i> Play
-                    </button>
-                </div>
-
-                <!-- Station 6 -->
-                <div class="station-card" data-url="https://stream.zeno.fm/uxg9gmcarchvv" data-name="Katugastota Muslim Radio LIVE">
-                    <div class="station-icon"><i class="fas fa-music"></i></div>
-                    <h4>Katugastota Muslim Radio LIVE</h4>
-                    <p>Islamic Radio</p>
-                    <button class="station-play-btn" data-url="https://stream.zeno.fm/uxg9gmcarchvv" data-name="Katugastota Muslim Radio LIVE">
-                        <i class="fas fa-play"></i> Play
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== YOUTUBE EMBED ===== -->
-    <section id="youtube" class="youtube-section">
-        <div class="container">
-            <h2>🎥 Our YouTube Channel</h2>
-            <div class="youtube-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed?listType=user_uploads&list=UCSAMPLE" 
-                    title="Tamil Muslim TV Channel"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank" class="btn-youtube">
-                <i class="fab fa-youtube"></i> Visit Channel
+            <a class="btn btn-gold btn-sm nav-cta" href="index.html#player">
+              <i class="bi bi-broadcast" aria-hidden="true"></i> Listen Live
             </a>
-        </div>
-    </section>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+  </nav>
 
-    <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>📖 About Us</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p><strong>Tamil Islamic Voice</strong> is a dedicated radio platform bringing authentic Islamic content to the Tamil-speaking community worldwide. Our mission is to educate, inspire, and connect through the timeless message of Islam.</p>
-                    <p>Based in <strong>Siraj Nagar, Thampalagamam, Trincomalee, Sri Lanka</strong>, we serve listeners across the globe with a variety of programs including Qur'an recitation, lectures, nasheeds, and community discussions.</p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat"><i class="fas fa-globe"></i> <span>Global</span> <small>Reach</small></div>
-                    <div class="stat"><i class="fas fa-clock"></i> <span>24/7</span> <small>Broadcast</small></div>
-                    <div class="stat"><i class="fas fa-users"></i> <span>+10k</span> <small>Listeners</small></div>
-                </div>
+  <!-- ===================== Hero Section ===================== -->
+  <header id="home" class="hero">
+    <div class="hero-pattern" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <div class="hero-inner text-center" data-hero>
+        <div class="hero-logo-wrap reveal">
+          <img src="images/logo.png" alt="Tamil Islamic Voice — large radio logo" class="hero-logo" width="150" height="150">
+          <span class="hero-logo-ring" aria-hidden="true"></span>
+        </div>
+
+        <span class="live-badge big reveal"><span class="live-dot"></span> On Air — Live 24/7</span>
+
+        <h1 class="hero-title reveal">Tamil Islamic Voice</h1>
+        <p class="hero-tagline reveal">"Listen to Islamic Knowledge Anywhere, Anytime"</p>
+
+        <!-- Live radio player card (hero) -->
+        <div class="player-card glass reveal" id="mainPlayer">
+          <div class="player-top">
+            <div class="player-art">
+              <img src="images/logo.png" alt="Tamil Islamic Voice radio logo" width="72" height="72">
             </div>
-        </div>
-    </section>
-
-    <!-- ===== CONTACT SECTION ===== -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>📬 Contact Us</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Siraj Nagar, Thampalagamam, Trincomalee, Sri Lanka</p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+94757374750">+94 75 737 4750</a></p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:tamilislamicvoice@gmail.com">tamilislamicvoice@gmail.com</a></p>
-                    <p><i class="fab fa-youtube"></i> <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank">Tamil Muslim TV Channel</a></p>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="Your Name" required />
-                    <input type="email" placeholder="Your Email" required />
-                    <textarea rows="4" placeholder="Your Message..." required></textarea>
-                    <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
-                </form>
+            <div class="player-info">
+              <h3>Tamil Islamic Voice</h3>
+              <span class="live-badge" id="liveBadge"><span class="live-dot"></span> LIVE</span>
+              <p class="now-playing" id="nowPlaying">
+                <i class="bi bi-broadcast" aria-hidden="true"></i> <span id="nowPlayingText">Now Playing Live</span>
+              </p>
             </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="container footer-flex">
-            <p>&copy; 2026 Tamil Islamic Voice. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://wa.me/94757374750" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:tamilislamicvoice@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="equalizer" id="equalizer" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
             </div>
-        </div>
-    </footer>
+          </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
-    <script src="script.js"></script>
+          <!-- Main HTML5 audio element (stream source) -->
+          <audio id="audio" preload="none" src="https://stream.zeno.fm/v6mwdn1kcd0uv"></audio>
+
+          <div class="player-controls">
+            <button id="playBtn" class="btn-play" type="button" aria-label="Play or pause live radio">
+              <i class="bi bi-play-fill play-ico" aria-hidden="true"></i>
+              <i class="bi bi-pause-fill pause-ico" aria-hidden="true"></i>
+            </button>
+
+            <div class="volume-wrap">
+              <button id="muteBtn" class="icon-btn" type="button" aria-label="Mute or unmute">
+                <i class="bi bi-volume-up mute-ico" aria-hidden="true"></i>
+              </button>
+              <input type="range" id="volume" min="0" max="100" value="80" aria-label="Volume control">
+              <span id="volumeValue" class="volume-value">80%</span>
+            </div>
+
+            <span id="buffering" class="buffering" hidden>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Buffering…
+            </span>
+          </div>
+        </div>
+
+        <!-- Quick stats strip -->
+        <div class="hero-stats reveal" aria-label="Radio highlights">
+          <div class="stat"><i class="bi bi-broadcast" aria-hidden="true"></i><span>24/7 Live</span></div>
+          <div class="stat"><i class="bi bi-radio" aria-hidden="true"></i><span>5+ Stations</span></div>
+          <div class="stat"><i class="bi bi-globe-asia-australia" aria-hidden="true"></i><span>Worldwide</span></div>
+          <div class="stat"><i class="bi bi-gift" aria-hidden="true"></i><span>100% Free</span></div>
+        </div>
+
+        <a href="#player" class="scroll-cue" aria-label="Scroll to radio player section">
+          <i class="bi bi-chevron-down" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== Main Live Player Section ===================== -->
+  <section id="player" class="section player-section">
+    <div class="container">
+      <div class="section-head reveal" data-aos="fade-up">
+        <span class="kicker"><i class="bi bi-broadcast" aria-hidden="true"></i> Live Radio Player</span>
+        <h2>Listen <span class="gold-text">Live</span> Now</h2>
+        <p>Tune in to our main stream. Quran, Hadith, lectures and reminders — broadcast around the clock.</p>
+      </div>
+
+      <div class="player-large glass reveal" data-aos="fade-up">
+        <div class="player-large-art">
+          <img src="images/logo.png" alt="Tamil Islamic Voice logo" width="128" height="128">
+          <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+        </div>
+        <div class="player-large-info">
+          <h3>Tamil Islamic Voice</h3>
+          <p id="bigStatus"><i class="bi bi-volume-up" aria-hidden="true"></i> Now Playing Live</p>
+          <div class="equalizer eq-lg" id="bigEqualizer" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="player-large-actions">
+          <a class="btn btn-gold" href="https://stream.zeno.fm/v6mwdn1kcd0uv" target="_blank" rel="noopener">
+            <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Direct Stream
+          </a>
+          <button id="playBtn2" class="btn btn-green" type="button">
+            <i class="bi bi-play-fill big-play-ico" aria-hidden="true"></i>
+            <i class="bi bi-pause-fill big-pause-ico" aria-hidden="true"></i>
+            <span class="big-play-txt">Play</span><span class="big-pause-txt">Pause</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Other Islamic Radio Stations ===================== -->
+  <section id="radios" class="section radios-section">
+    <div class="container">
+      <div class="section-head reveal" data-aos="fade-up">
+        <span class="kicker"><i class="bi bi-radio" aria-hidden="true"></i> Sister Stations</span>
+        <h2>Other <span class="gold-text">Islamic Radios</span></h2>
+        <p>Switch between our partner stations — the previous stream stops automatically.</p>
+      </div>
+
+      <div class="row g-4 stations-grid" id="stationsGrid">
+        <!-- Station cards are rendered by js/player.js from STATIONS config -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== YouTube Section ===================== -->
+  <section id="youtube" class="section youtube-section">
+    <div class="container">
+      <div class="section-head reveal" data-aos="fade-up">
+        <span class="kicker"><i class="bi bi-youtube" aria-hidden="true"></i> Video Library</span>
+        <h2>Our <span class="gold-text">YouTube</span> Channel</h2>
+        <p>Thousands of Tamil Islamic videos — bayans, duas, lectures and reminders on <b>Tamil Muslim TV</b>.</p>
+      </div>
+
+      <div class="youtube-wrap reveal" data-aos="fade-up">
+        <!-- Latest uploads playlist embed (uses real channel ID UC751kXgEpAI29cwsI5YTeHw) -->
+        <iframe id="ytFrame" src="https://www.youtube-nocookie.com/embed?listType=user_uploads&list=UC751kXgEpAI29cwsI5YTeHw"
+                title="Latest videos from Tamil Muslim TV on YouTube"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+      </div>
+
+      <div class="youtube-actions reveal" data-aos="fade-up">
+        <a class="btn btn-youtube" href="https://www.youtube.com/channel/UC751kXgEpAI29cwsI5YTeHw?sub_confirmation=1" target="_blank" rel="noopener">
+          <i class="bi bi-youtube" aria-hidden="true"></i> Subscribe
+        </a>
+        <a class="btn btn-outline-gold" href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank" rel="noopener">
+          <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== About Us (section) ===================== -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-head reveal" data-aos="fade-up">
+        <span class="kicker"><i class="bi bi-moon-stars" aria-hidden="true"></i> About Us</span>
+        <h2>Sharing <span class="gold-text">Islamic Knowledge</span> Worldwide</h2>
+        <p>Tamil Islamic Voice is an online Islamic radio dedicated to spreading authentic Islamic knowledge to the Tamil-speaking community, wherever they are.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 reveal" data-aos="fade-right">
+          <div class="about-text glass">
+            <p>Tamil Islamic Voice is a dedicated online Islamic radio platform broadcasting <b>Quran recitation</b>, <b>Hadith</b>, <b>Islamic lectures</b>, <b>reminders</b> and other beneficial programs to listeners worldwide — in the beautiful Tamil language.</p>
+            <p>From Thampalagamam, Trincomalee, Sri Lanka, we reach homes, hearts and minds across the globe, offering a peaceful voice of faith, guidance and hope, 24 hours a day, 7 days a week.</p>
+            <a class="btn btn-green" href="about.html"><i class="bi bi-arrow-right" aria-hidden="true"></i> Read More About Us</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row g-3">
+            <div class="col-sm-6 reveal" data-aos="fade-up">
+              <div class="feature-card glass">
+                <i class="bi bi-book-half feature-ico" aria-hidden="true"></i>
+                <h4>Quran &amp; Hadith</h4>
+                <p>Authentic recitation and prophetic teachings.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 reveal" data-aos="fade-up" data-aos-delay="100">
+              <div class="feature-card glass">
+                <i class="bi bi-mic feature-ico" aria-hidden="true"></i>
+                <h4>Islamic Lectures</h4>
+                <p>Scholars and speakers share beneficial knowledge.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 reveal" data-aos="fade-up" data-aos-delay="200">
+              <div class="feature-card glass">
+                <i class="bi bi-bell feature-ico" aria-hidden="true"></i>
+                <h4>Daily Reminders</h4>
+                <p>Short, practical reminders for everyday life.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 reveal" data-aos="fade-up" data-aos-delay="300">
+              <div class="feature-card glass">
+                <i class="bi bi-globe2 feature-ico" aria-hidden="true"></i>
+                <h4>Worldwide Audience</h4>
+                <p>Streaming to Tamil Muslims everywhere.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Donate Section ===================== -->
+  <section id="donate" class="section donate-section">
+    <div class="container">
+      <div class="section-head reveal" data-aos="fade-up">
+        <span class="kicker"><i class="bi bi-heart" aria-hidden="true"></i> Support Us</span>
+        <h2>Help Keep the <span class="gold-text">Voice</span> Alive</h2>
+        <p>Your support helps us keep broadcasting Quran and Islamic knowledge free for everyone, 24/7.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4 reveal" data-aos="fade-up">
+          <div class="donate-card glass">
+            <div class="donate-icon"><i class="bi bi-whatsapp" aria-hidden="true"></i></div>
+            <h4>Donate via WhatsApp</h4>
+            <p>Contact us directly on WhatsApp and we will guide you to support the station.</p>
+            <a class="btn btn-whatsapp" href="https://wa.me/94757374750?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20support%20Tamil%20Islamic%20Voice." target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp" aria-hidden="true"></i> Chat With Us
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4 reveal" data-aos="fade-up" data-aos-delay="100">
+          <div class="donate-card glass featured">
+            <div class="donate-icon"><i class="bi bi-envelope-heart" aria-hidden="true"></i></div>
+            <h4>Email Us</h4>
+            <p>Write to us and our team will respond with support and donation options.</p>
+            <a class="btn btn-gold" href="mailto:tamilislamicvoice@gmail.com?subject=Support%20Tamil%20Islamic%20Voice">
+              <i class="bi bi-envelope" aria-hidden="true"></i> Send Email
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4 reveal" data-aos="fade-up" data-aos-delay="200">
+          <div class="donate-card glass">
+            <div class="donate-icon"><i class="bi bi-share" aria-hidden="true"></i></div>
+            <h4>Spread the Word</h4>
+            <p>Share our radio and YouTube channel with family and friends — it costs nothing.</p>
+            <a class="btn btn-green" href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank" rel="noopener">
+              <i class="bi bi-youtube" aria-hidden="true"></i> Share on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="donate-note reveal" data-aos="fade-up">JazakAllahu Khairan for your kindness and support. <i class="bi bi-heart-fill" aria-hidden="true"></i></p>
+    </div>
+  </section>
+
+  <!-- ===================== Contact Section ===================== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-head reveal" data-aos="fade-up">
+        <span class="kicker"><i class="bi bi-envelope" aria-hidden="true"></i> Contact Us</span>
+        <h2>Get in <span class="gold-text">Touch</span></h2>
+        <p>Questions, duas, feedback or partnership — we would love to hear from you.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Contact info cards -->
+        <div class="col-lg-5">
+          <div class="row g-3">
+            <div class="col-12 reveal" data-aos="fade-right">
+              <a class="contact-card glass" href="https://wa.me/94757374750" target="_blank" rel="noopener">
+                <span class="contact-icon wa"><i class="bi bi-whatsapp" aria-hidden="true"></i></span>
+                <span><b>WhatsApp</b><br>+94 75 737 4750</span>
+              </a>
+            </div>
+            <div class="col-12 reveal" data-aos="fade-right" data-aos-delay="100">
+              <a class="contact-card glass" href="mailto:tamilislamicvoice@gmail.com">
+                <span class="contact-icon mail"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+                <span><b>Email</b><br>tamilislamicvoice@gmail.com</span>
+              </a>
+            </div>
+            <div class="col-12 reveal" data-aos="fade-right" data-aos-delay="200">
+              <div class="contact-card glass">
+                <span class="contact-icon pin"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+                <span><b>Address</b><br>Siraj Nagar, Thampalagamam,<br>Trincomalee, Sri Lanka</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Map placeholder (Trincomalee) -->
+          <div class="map-wrap reveal" data-aos="fade-up">
+            <iframe title="Map showing Trincomalee, Sri Lanka" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps?q=Trincomalee%2C%20Sri%20Lanka&z=11&output=embed"
+                    allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="col-lg-7">
+          <form id="contactForm" class="contact-form glass reveal" data-aos="fade-left" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="cfName">Your Name</label>
+                <input type="text" class="form-control" id="cfName" name="name" placeholder="e.g. Abdul Rahman" required autocomplete="name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="cfEmail">Email Address</label>
+                <input type="email" class="form-control" id="cfEmail" name="email" placeholder="you@example.com" required autocomplete="email">
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="cfSubject">Subject</label>
+                <input type="text" class="form-control" id="cfSubject" name="subject" placeholder="How can we help?" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="cfMessage">Message</label>
+                <textarea class="form-control" id="cfMessage" name="message" rows="5" placeholder="Write your message here…" required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-gold btn-lg w-100">
+                  <i class="bi bi-send" aria-hidden="true"></i> Send Message
+                </button>
+                <small class="form-hint">The form opens WhatsApp (or your email app) with your message pre-filled — no data is stored on this site.</small>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-brand" href="index.html">
+            <img src="images/logo.png" alt="Tamil Islamic Voice logo" width="48" height="48">
+            <span>Tamil <b>Islamic Voice</b></span>
+          </a>
+          <p class="footer-about">Online Islamic radio dedicated to spreading Quran, Hadith, Islamic lectures, reminders and beneficial programs to the Tamil-speaking world — 24 hours a day, 7 days a week.</p>
+          <div class="social-row">
+            <a href="https://www.youtube.com/@tamilmuslimtvchannel" target="_blank" rel="noopener" aria-label="YouTube channel" class="social-btn yt"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            <a href="https://wa.me/94757374750" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-btn wa"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+            <a href="mailto:tamilislamicvoice@gmail.com" aria-label="Email" class="social-btn mail"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+            <a href="https://stream.zeno.fm/v6mwdn1kcd0uv" target="_blank" rel="noopener" aria-label="Live stream" class="social-btn live"><i class="bi bi-broadcast" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h5 class="footer-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html#home"><i class="bi bi-chevron-right" aria-hidden="true"></i> Home</a></li>
+            <li><a href="index.html#player"><i class="bi bi-chevron-right" aria-hidden="true"></i> Listen Live</a></li>
+            <li><a href="index.html#radios"><i class="bi bi-chevron-right" aria-hidden="true"></i> Islamic Radios</a></li>
+            <li><a href="index.html#youtube"><i class="bi bi-chevron-right" aria-hidden="true"></i> YouTube</a></li>
+            <li><a href="index.html#donate"><i class="bi bi-chevron-right" aria-hidden="true"></i> Donate</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h5 class="footer-title">Pages</h5>
+          <ul class="footer-links">
+            <li><a href="about.html"><i class="bi bi-chevron-right" aria-hidden="true"></i> About Us</a></li>
+            <li><a href="contact.html"><i class="bi bi-chevron-right" aria-hidden="true"></i> Contact</a></li>
+            <li><a href="privacy.html"><i class="bi bi-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
+            <li><a href="privacy.html#terms"><i class="bi bi-chevron-right" aria-hidden="true"></i> Terms of Use</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Contact</h5>
+          <ul class="footer-contact">
+            <li><i class="bi bi-whatsapp" aria-hidden="true"></i> <a href="https://wa.me/94757374750" target="_blank" rel="noopener">+94 75 737 4750</a></li>
+            <li><i class="bi bi-envelope" aria-hidden="true"></i> <a href="mailto:tamilislamicvoice@gmail.com">tamilislamicvoice@gmail.com</a></li>
+            <li><i class="bi bi-geo-alt" aria-hidden="true"></i> Siraj Nagar, Thampalagamam,<br>Trincomalee, Sri Lanka</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> Tamil Islamic Voice. All rights reserved.</p>
+        <p><a href="privacy.html">Privacy Policy</a> · <a href="privacy.html#terms">Terms</a></p>
+        <p class="made-with">Designed with <i class="bi bi-heart-fill" aria-hidden="true"></i> for the Ummah</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== Floating Action Buttons ===================== -->
+  <!-- Floating Live Radio -->
+  <a href="#player" class="float-btn float-live" id="floatLive" aria-label="Go to live radio player" title="Listen Live">
+    <i class="bi bi-broadcast" aria-hidden="true"></i>
+    <span class="float-ping" aria-hidden="true"></span>
+  </a>
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/94757374750" target="_blank" rel="noopener" class="float-btn float-wa" aria-label="Chat on WhatsApp" title="WhatsApp Us">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+  </a>
+  <!-- Floating Scroll to Top -->
+  <button id="backToTop" class="float-btn float-top" type="button" aria-label="Scroll back to top" title="Back to top">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Toast notifications (station switching etc.) -->
+  <div id="toastBox" class="toast-box" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===================== Scripts ===================== -->
+  <!-- Third-party -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Local -->
+  <script src="js/player.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/app.js"></script>
+  <noscript>
+    <p style="text-align:center;padding:1rem;background:#fff3cd;color:#664d03">
+      Please enable JavaScript to use the live radio player.
+    </p>
+  </noscript>
 </body>
 </html>
-
