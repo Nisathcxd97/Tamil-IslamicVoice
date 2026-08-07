@@ -1,8 +1,0 @@
-# Tamil Islamic Voice — robots.txt
-# Allow all search engines to crawl the site
-
-User-agent: *
-Allow: /
-
-# Sitemap location (replace domain with your real one)
-Sitemap: https://tamilislamicvoice.online/sitemap.xml
