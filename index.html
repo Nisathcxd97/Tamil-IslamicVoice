@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
@@ -9,6 +9,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/j9cNH1jT/Gemini-Generated-Image-d5wlnid5wlnid5wl.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/j9cNH1jT/Gemini-Generated-Image-d5wlnid5wlnid5wl.png">
     <link rel="shortcut icon" href="https://i.ibb.co/j9cNH1jT/Gemini-Generated-Image-d5wlnid5wlnid5wl.png">
+    
+    <!-- Android App Download Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <style>
         * {
@@ -312,6 +317,50 @@
             padding-top: 20px;
         }
 
+        /* ============================================
+           ANDROID APP DOWNLOAD - BOTTOM SECTION ONLY
+           ============================================ */
+        .android-download-section {
+            margin-top: 30px;
+            padding: 20px 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            border: 1px solid #4f7a5a;
+            text-align: center;
+        }
+
+        .android-download-section h4 {
+            color: #e9d48b;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .android-download-section .download-bottom-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2b5a3a, #1a4a2e);
+            padding: 14px 35px;
+            border-radius: 60px;
+            border: 2px solid #d4af37;
+            color: #f5f7e9;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .android-download-section .download-bottom-btn:hover {
+            background: linear-gradient(135deg, #3c7a4e, #2b5a3a);
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .android-download-section .download-bottom-btn .btn-icon {
+            font-size: 1.8rem;
+        }
+
         /* responsive */
         @media (max-width: 480px) {
             .container {
@@ -334,6 +383,13 @@
             .player-card audio {
                 height: 48px;
             }
+            .android-download-section .download-bottom-btn {
+                font-size: 0.95rem;
+                padding: 12px 25px;
+            }
+            .android-download-section .download-bottom-btn .btn-icon {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 380px) {
@@ -343,6 +399,13 @@
             }
             .channel-card img {
                 max-width: 80px;
+            }
+            .android-download-section .download-bottom-btn {
+                font-size: 0.85rem;
+                padding: 10px 18px;
+            }
+            .android-download-section .download-bottom-btn .btn-icon {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -355,17 +418,17 @@
     <div class="header">
         <img src="https://i.ibb.co/j9cNH1jT/Gemini-Generated-Image-d5wlnid5wlnid5wl.png" alt="Tamil Islamic Voice Logo">
         <div class="radio-name">🎙️ Tamil Islamic Voice</div>
-        <div class="sub-caption">📻 இஸ்லாமிய ஒலிபரப்பு</div>
+        <div class="sub-caption">📻 Islamic Broadcasting</div>
     </div>
 
     <!-- MAIN PLAYER (AUTOPLAY) -->
     <div class="player-card">
         <audio id="mainAudio" controls autoplay>
             <source src="https://stream.zeno.fm/v6mwdn1kcd0uv" type="audio/mpeg">
-            உங்கள் உலாவி ஆடியோவை ஆதரிக்கவில்லை.
+            Your browser does not support the audio element.
         </audio>
         <div class="now-playing">
-            🔴 <span>நேரலை</span> &nbsp; Tamil Islamic Voice
+            🔴 <span>Live</span> &nbsp; Tamil Islamic Voice
         </div>
     </div>
 
@@ -383,7 +446,7 @@
     </div>
 
     <!-- ALL RADIO CHANNELS -->
-    <div class="section-title">📡 மேலதிக ரேடியோக்கள்</div>
+    <div class="section-title">📡 ALL RADIO CHANNELS </div>
     <div class="channel-grid" id="channelGrid">
         <!-- Muslim Vaanoli -->
         <div class="channel-card" data-url="https://stream.muslimvanoli.com:1035/stream">
@@ -435,9 +498,23 @@
         </div>
     </div>
 
+    <!-- ==========================================
+         ANDROID APP DOWNLOAD - BOTTOM SECTION ONLY
+         ========================================== -->
+    <div class="android-download-section">
+        <h4>📱 Android App Download</h4>
+        <a href="https://github.com/Nisathcxd97/APP/raw/refs/heads/main/TIV(1).apk" class="download-bottom-btn" target="_blank">
+            <span class="btn-icon">📲</span>
+            Download APK
+        </a>
+        <div style="margin-top: 10px; font-size: 0.75rem; color: #85a58a;">
+            Android 5.0+ | Version 1.0.0
+        </div>
+    </div>
+
     <!-- CONTACT & ADDRESS -->
-    <div class="contact-section">
-        <h3>📞 தொடர்பு</h3>
+    <div class="contact-section" id="contactSection">
+        <h3>📞 Contact Us</h3>
         <div class="contact-item">
             <span style="font-size:1.5rem;">📱</span>
             <a href="https://wa.me/94757374750" target="_blank">+94 75 737 4750</a>
@@ -448,7 +525,7 @@
         </div>
         <div class="contact-item">
             <span style="font-size:1.5rem;">📍</span>
-            <span style="color:#cfe0cf;">முகவரி:</span>
+            <span style="color:#cfe0cf;">Address:</span>
         </div>
         <div class="address-box">
             Siraj Nagar, Thampalagamam,<br>
@@ -483,7 +560,7 @@
             if (nowPlayingSpan && channelName) {
                 nowPlayingSpan.textContent = channelName;
             } else if (nowPlayingSpan) {
-                nowPlayingSpan.textContent = 'நேரலை';
+                nowPlayingSpan.textContent = 'Live';
             }
         }
 
@@ -492,9 +569,9 @@
             card.addEventListener('click', function(e) {
                 const url = this.getAttribute('data-url');
                 const nameElement = this.querySelector('.ch-name');
-                let channelName = nameElement ? nameElement.innerText : 'ரேடியோ';
+                let channelName = nameElement ? nameElement.innerText : 'Radio';
                 // special case if name is empty
-                if (!channelName || channelName.trim() === '') channelName = 'ரேடியோ';
+                if (!channelName || channelName.trim() === '') channelName = 'Radio';
                 playChannel(url, channelName);
                 // optional: highlight effect
                 this.style.borderColor = '#f5d742';
@@ -535,6 +612,8 @@
             }
             document.body.removeEventListener('click', initAudioClick);
         }, { once: true });
+
+        console.log('📻 Tamil Islamic Voice - Live Radio');
 
     })();
 </script>
