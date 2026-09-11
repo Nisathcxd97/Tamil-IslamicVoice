@@ -318,10 +318,49 @@
         }
 
         /* ============================================
-           ANDROID APP DOWNLOAD - BOTTOM SECTION ONLY
+           VISITOR COUNTER - ABOVE CONTACT US
+           ============================================ */
+        .visitor-counter {
+            margin-top: 30px;
+            padding: 18px 15px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 25px;
+            border: 1px solid #4f7a5a;
+            text-align: center;
+        }
+
+        .visitor-counter .counter-label {
+            color: #b8d9c0;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .visitor-counter .counter-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #f5e56b;
+            text-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+            font-family: 'Courier New', monospace;
+            margin-top: 2px;
+        }
+
+        .visitor-counter .counter-number .digit {
+            display: inline-block;
+            min-width: 35px;
+            animation: countPulse 0.3s ease;
+        }
+
+        @keyframes countPulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ============================================
+           ANDROID APP DOWNLOAD - BOTTOM SECTION
            ============================================ */
         .android-download-section {
-            margin-top: 30px;
+            margin-top: 20px;
             padding: 20px 16px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 30px;
@@ -383,6 +422,9 @@
             .player-card audio {
                 height: 48px;
             }
+            .visitor-counter .counter-number {
+                font-size: 2.2rem;
+            }
             .android-download-section .download-bottom-btn {
                 font-size: 0.95rem;
                 padding: 12px 25px;
@@ -399,6 +441,9 @@
             }
             .channel-card img {
                 max-width: 80px;
+            }
+            .visitor-counter .counter-number {
+                font-size: 1.8rem;
             }
             .android-download-section .download-bottom-btn {
                 font-size: 0.85rem;
@@ -424,11 +469,11 @@
     <!-- MAIN PLAYER (AUTOPLAY) -->
     <div class="player-card">
         <audio id="mainAudio" controls autoplay>
-            <source src="https://stream.zeno.fm/v6mwdn1kcd0uv" type="audio/mpeg">
+            <source src="https://stream.muslimvanoli.com:1035/stream" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
         <div class="now-playing">
-            🔴 <span>Live</span> &nbsp; Tamil Islamic Voice
+            🔴 <span>Live</span> &nbsp; Muslim Vaanoli
         </div>
     </div>
 
@@ -446,7 +491,7 @@
     </div>
 
     <!-- ALL RADIO CHANNELS -->
-    <div class="section-title">📡 ALL RADIO CHANNELS </div>
+    <div class="section-title">📡 More Radio Channels</div>
     <div class="channel-grid" id="channelGrid">
         <!-- Muslim Vaanoli -->
         <div class="channel-card" data-url="https://stream.muslimvanoli.com:1035/stream">
@@ -490,12 +535,6 @@
             <div class="ch-name">Quran Radio</div>
             <span class="play-icon">▶ PLAY</span>
         </div>
-        <!-- Barakath Radio -->
-        <div class="channel-card" data-url="https://stream.rcs.revma.com/cy0s94xf268uv">
-            <img src="https://i.ibb.co/BKwJybgH/Gemini-Generated-Image-2ot4pi2ot4pi2ot4.png" alt="Barakath Radio">
-            <div class="ch-name">Barakath Radio</div>
-            <span class="play-icon">▶ PLAY</span>
-        </div>
         <!-- Tamil Islamic Voice (Main) -->
         <div class="channel-card" data-url="https://stream.zeno.fm/v6mwdn1kcd0uv">
             <img src="https://i.ibb.co/j9cNH1jT/Gemini-Generated-Image-d5wlnid5wlnid5wl.png" alt="Tamil Islamic Voice">
@@ -504,18 +543,24 @@
         </div>
     </div>
 
-    <!-- ==========================================
-         ANDROID APP DOWNLOAD - BOTTOM SECTION ONLY
-         ========================================== -->
+    <!-- ANDROID APP DOWNLOAD -->
     <div class="android-download-section">
         <h4>📱 Android App Download</h4>
-        <a href="https://bucket.appilix.com/app-apk-e12a65e78e1e496b861a39afad11d11c-1787021729.apk" class="download-bottom-btn" target="_blank">
+        <a href="https://github.com/Nisathcxd97/APP/raw/refs/heads/main/TIV(1).apk" class="download-bottom-btn" target="_blank">
             <span class="btn-icon">📲</span>
             Download APK
         </a>
         <div style="margin-top: 10px; font-size: 0.75rem; color: #85a58a;">
             Android 5.0+ | Version 1.0.0
         </div>
+    </div>
+
+    <!-- ==========================================
+         VISITOR COUNTER - ABOVE CONTACT US
+         ========================================== -->
+    <div class="visitor-counter">
+        <div class="counter-label">👥 Website Visitors</div>
+        <div class="counter-number" id="visitorCount">0</div>
     </div>
 
     <!-- CONTACT & ADDRESS -->
@@ -545,12 +590,82 @@
 
 </div>
 
-<!-- JAVASCRIPT: Channel click to change main audio -->
+<!-- JAVASCRIPT: Channel click to change main audio + Visitor Counter -->
 <script>
     (function() {
         const mainAudio = document.getElementById('mainAudio');
         const channelCards = document.querySelectorAll('.channel-card');
         const nowPlayingSpan = document.querySelector('.now-playing span');
+
+        // ============================================
+        // VISITOR COUNTER - Using localStorage
+        // ============================================
+        function updateVisitorCounter() {
+            const counterElement = document.getElementById('visitorCount');
+            if (!counterElement) return;
+
+            // Get current count from localStorage
+            let count = parseInt(localStorage.getItem('tiv_visitor_count')) || 0;
+            
+            // Check if this is a new visit (session based)
+            const sessionKey = 'tiv_visitor_session';
+            const today = new Date().toDateString();
+            const sessionData = sessionStorage.getItem(sessionKey);
+            
+            let isNewVisit = false;
+            
+            if (!sessionData) {
+                // New session - count as new visit
+                isNewVisit = true;
+                sessionStorage.setItem(sessionKey, today);
+            } else if (sessionData !== today) {
+                // New day - count as new visit
+                isNewVisit = true;
+                sessionStorage.setItem(sessionKey, today);
+            }
+
+            // If it's a new visit, increment the counter
+            if (isNewVisit) {
+                count += 1;
+                localStorage.setItem('tiv_visitor_count', count.toString());
+            }
+
+            // Animate the counter
+            animateCounter(counterElement, count);
+        }
+
+        function animateCounter(element, targetValue) {
+            const startValue = 0;
+            const duration = 800; // ms
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Ease out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const currentValue = Math.floor(startValue + (targetValue - startValue) * eased);
+                
+                // Format with commas
+                element.textContent = currentValue.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = targetValue.toLocaleString();
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Initialize visitor counter on page load
+        updateVisitorCounter();
+
+        // ============================================
+        // PLAYER FUNCTIONALITY
+        // ============================================
 
         // function to update the player
         function playChannel(url, channelName) {
@@ -570,7 +685,7 @@
             }
         }
 
-        // Add click listeners
+        // Add click listeners to channel cards
         channelCards.forEach(card => {
             card.addEventListener('click', function(e) {
                 const url = this.getAttribute('data-url');
@@ -620,6 +735,7 @@
         }, { once: true });
 
         console.log('📻 Tamil Islamic Voice - Live Radio');
+        console.log('👥 Visitor Counter active');
 
     })();
 </script>
